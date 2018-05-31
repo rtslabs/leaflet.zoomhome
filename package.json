@@ -1,4 +1,7 @@
 {
+  "name": "leaflet.zoomhome",
+  "version": "0.2.0",
+  "description": "plugin for zoom home functionality",
   "devDependencies": {
     "chai": "4.1.2",
     "grunt": "~0.4.5",
