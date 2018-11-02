@@ -20,7 +20,7 @@
             zoomHomeTitle: 'Home',
             homeCoordinates: null,
             homeZoom: null,
-            homeBounds: null
+            bounds: null
         },
 
         onAdd: function (map) {
@@ -50,15 +50,15 @@
         },
 
         setHomeBounds: function () {
-            if (options.homeBounds === undefined) {
-                homeBounds = this._map.getBounds();
+            if (options.bounds === undefined) {
+                bounds = this._map.getBounds();
             } else {
-                if (typeof options.homeBounds.getCenter !== 'function') {
-                    homeBounds = L.latLngBounds(options.homeBounds);
+                if (typeof options.bounds.getCenter !== 'function') {
+                    bounds = L.latLngBounds(options.bounds);
                 }
             }
-            this.options.homeZoom = this._map.getBoundsZoom(homeBounds);
-            this.options.homeCoordinates = homeBounds.getCenter();
+            this.options.homeZoom = this._map.getBoundsZoom(bounds);
+            this.options.homeCoordinates = bounds.getCenter();
         },
 
         setHomeCoordinates: function (coordinates) {
