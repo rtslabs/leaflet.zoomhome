@@ -19,7 +19,8 @@
             zoomHomeIcon: 'home',
             zoomHomeTitle: 'Home',
             homeCoordinates: null,
-            homeZoom: null
+            homeZoom: null,
+            homeBounds: null
         },
 
         onAdd: function (map) {
@@ -48,16 +49,16 @@
             return container;
         },
 
-        setHomeBounds: function (bounds) {
-            if (bounds === undefined) {
-                bounds = this._map.getBounds();
+        setHomeBounds: function () {
+            if (options.homeBounds === undefined) {
+                homeBounds = this._map.getBounds();
             } else {
-                if (typeof bounds.getCenter !== 'function') {
-                    bounds = L.latLngBounds(bounds);
+                if (typeof options.homeBounds.getCenter !== 'function') {
+                    homeBounds = L.latLngBounds(options.homeBounds);
                 }
             }
-            this.options.homeZoom = this._map.getBoundsZoom(bounds);
-            this.options.homeCoordinates = bounds.getCenter();
+            this.options.homeZoom = this._map.getBoundsZoom(homeBounds);
+            this.options.homeCoordinates = homeBounds.getCenter();
         },
 
         setHomeCoordinates: function (coordinates) {
